@@ -1,3 +1,4 @@
+{% load static %}
 <!doctype html>
 <html lang="ko">
 <head>
@@ -5,13 +6,20 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="{% static 'blog/bootstrap/bootstrap.css' %}" media="screen">
+    <link rel="stylesheet" href="{% static 'blog/assets/css/custom.min.css' %}">
     <title>Document</title>
 </head>
 <body>
-{% for p in object_list %}
-<h3>{{ p.title }}</h3>
-<h4>{{ p.created }} by {{ p.author }}</h4>
-<p>{{ p.content }}</p>
-{% endfor %}
+    {% for p in object_list %}
+    <h3>{{ p.title }}</h3>
+    <h4>{{ p.created }} by {{ p.author }}</h4>
+    <p>{{ p.content }}</p>
+    {% endfor %}
+
+    <script src="{% static 'blog/assets/js/jquery.min.js' %}"></script>
+    <script src="{% static 'blog/assets/js/popper.min.js' %}"></script>
+    <script src="{% static 'blog/bootstrap/bootstrap.min.js' %}"></script>
+    <script src="{% static 'blog/assets/js/custom.js' %}"></script>
 </body>
 </html>
