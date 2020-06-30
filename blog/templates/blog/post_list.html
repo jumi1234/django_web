@@ -5,7 +5,7 @@
         {% if object_list.exists %}
         {% for p in object_list %}
         <!-- Blog Post -->
-        <div class="card mb-4">
+
 <!--          <img class="card-img-top" src="http://placehold.it/750x300" alt="Card image cap">-->
             {% if p.head_image %}
             <img class="card-img-top" src="{{ p.head_image.url }}" alt="Card image cap">
@@ -14,6 +14,11 @@
             {% endif %}
 
           <div class="card-body">
+            {% if p.category %}
+            <span class="badge badge-primary">{{ p.category }}</span>
+            {% else %}
+            <span class="badge badge-primary">미분류</span>
+            {% endif %}
             <h2 class="card-title">{{ p.title }}</h2>
             <p class="card-text">{{ p.content | truncatewords:50}}</p>
             <a href="{{ p.get_absolute_url }}" class="btn btn-primary" id="read-more-post-{{ p.pk }}">Read More &rarr;</a>

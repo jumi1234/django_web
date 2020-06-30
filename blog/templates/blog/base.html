@@ -75,23 +75,13 @@
 
         </div>
     </div>
- <div class="container">
-     <div class="row">
-         <div class="col-sm-6 col-md-8 bg-info">
-              <h1>One 어쩌구</h1>
-          </div>
-          <div class="col-sm col-md-3 bg-light">
-              <h1>Two 어저구</h1>
-          </div>
-          <div class="col-sm col-md bg-danger">
-              <h1>Three 어쩌구</h1>
-          </div>
-     </div>
+  <!-- Page Content -->
+  <div class="container">
 
     <div class="row">
 
-      <!-- Blog Entries Column -->
-      <div class="col-md-8">
+      <!-- Post Content Column -->
+      <div class="col-lg-8">
         {% block content %}
         {% endblock %}
       </div>
@@ -112,8 +102,58 @@
           </div>
         </div>
 
+        <!-- Categories Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Categories</h5>
+          <div class="card-body">
+            <div class="row">
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">미분류({{ posts_without_category }})</a>
+                  </li>
+                  {% for category in category_list %}
+                  <li>
+                    <a href="#">{{ category.name }}({{ category.post_set.count }})</a>
+                  </li>
+                  <li>
+                    <a href="#">Freebies</a>
+                  </li>
+                  {% endfor %}
+                </ul>
+              </div>
+              <div class="col-lg-6">
+                <ul class="list-unstyled mb-0">
+                  <li>
+                    <a href="#">JavaScript</a>
+                  </li>
+                  <li>
+                    <a href="#">CSS</a>
+                  </li>
+                  <li>
+                    <a href="#">Tutorials</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Side Widget -->
+        <div class="card my-4">
+          <h5 class="card-header">Side Widget</h5>
+          <div class="card-body">
+            You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
+          </div>
+        </div>
+
+      </div>
+
     </div>
- </div>
+    <!-- /.row -->
+
+  </div>
+  <!-- /.container -->
 
     <script src="{% static 'blog/assets/js/jquery.min.js' %}"></script>
     <script src="{% static 'blog/assets/js/popper.min.js' %}"></script>
