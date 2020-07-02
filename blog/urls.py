@@ -22,5 +22,6 @@ urlpatterns = [
     path('tag/<str:slug>/', views.PostListByTag.as_view()),
     path('category/<str:slug>/', views.PostListByCategory.as_view()),
     path('<int:pk>/', views.PostDetail.as_view()),
+    path('<int:pk>/update/', views.PostUpdate.as_view()),
     path('', views.PostList.as_view()),
 ]

@@ -19,7 +19,7 @@
     <a href="#">{{ object.author }}</a>
 </p>
 {% if request.user == object.author %}
-    <span class="btn btn-sm btn-outline-secondary float-right">edit</span>
+    <span class="btn btn-sm btn-outline-secondary float-right" onclick="location.href='{{ object.get_update_url }}'">edit</span>
 {% endif %}
 <hr>
 
