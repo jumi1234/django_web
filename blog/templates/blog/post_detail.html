@@ -6,12 +6,20 @@
 <!-- Title -->
 <h1 class="mt-4">{{ object.title }}</h1>
 
+{% if object.category %}
+    <span class="badge badge-primary">{{ object.category }}</span>
+{% else %}
+    <span class="badge badge-primary float-right">미분류</span>
+{% endif %}
+
 <!-- Author -->
 <p class="lead">
     by
     <a href="#">{{ object.author }}</a>
 </p>
-
+{% if request.user == object.author %}
+    <span class="btn btn-sm btn-outline-secondary float-right">edit</span>
+{% endif %}
 <hr>
 
 <!-- Date/Time -->
