@@ -12,6 +12,7 @@
     <span class="badge badge-primary float-right">미분류</span>
 {% endif %}
 
+
 <!-- Author -->
 <p class="lead">
     by
@@ -29,11 +30,11 @@
 
 <!-- Preview Image -->
 {% if object.head_image %}
-<img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+<img class="img-fluid rounded" src="{{ object.head_image.url }}" alt="{{ object.title }}">
 {% endif %}
 
 <!-- Post Content -->
-<p>{{ object.content }}</p>
+<p>{{ object.get_markdown_content | safe }}</p>
 {% for tag in object.tags.all %}
 <a href="{{ tag.get_absolute_url }}">#{{ tag }}</a>
 {% endfor%}
