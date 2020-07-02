@@ -1,5 +1,8 @@
 {% extends 'blog/base.html' %}
-        {% block content %}
+    {% block content %}
+        {% if user.is_authenticated %}
+        <button class="btn btn-primary float-right" onclick="location.href='/blog/create/'">New Post</button>
+        {% endif %}
         <h1 class="my-4">BLOG:
             {% if category.slug %}<small class="text-muted">{{ category }}</small>{% endif %}
             {% if tag %}<small class="text-muted">#{{ tag }}</small>{% endif %}
@@ -38,4 +41,4 @@
          {% else %}
            <h1>포스트가 없습니다</h1>
          {% endif %}
-         {% endblock %}
+    {% endblock %}
