@@ -20,6 +20,11 @@
             {% endif %}
             <h2 class="card-title">{{ p.title }}</h2>
             <p class="card-text">{{ p.content | truncatewords:50}}</p>
+
+            {% for tag in p.tags.all %}
+              <a href="{{ tag.get_absolute_url }}">#{{ tag }}</a>
+            {% endfor %}
+            <br><br>
             <a href="{{ p.get_absolute_url }}" class="btn btn-primary" id="read-more-post-{{ p.pk }}">Read More &rarr;</a>
           </div>
           <div class="card-footer text-muted">

@@ -26,6 +26,9 @@
 
 <!-- Post Content -->
 <p>{{ object.content }}</p>
+{% for tag in object.tags.all %}
+<a href="{{ tag.get_absoulute_url }}">#{{ tag }}</a>
+{% endfor%}
 <hr>
 
 <!-- Comments Form -->
