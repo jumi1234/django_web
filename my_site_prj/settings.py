@@ -124,6 +124,8 @@ USE_TZ = True
 
 # Email 필수
 ACCOUNT_EMAIL_REQUIRED = True
+# 가입 시 에러 해결
+ACCOUNT_EMAIL_VERIFICATION = 'none'
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.0/howto/static-files/
