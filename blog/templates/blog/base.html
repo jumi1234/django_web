@@ -143,9 +143,9 @@
           <h5 class="card-header">Search</h5>
           <div class="card-body">
             <div class="input-group">
-              <input type="text" class="form-control" placeholder="Search for...">
+              <input type="text" class="form-control" id="search-input" onkeyup="wait_for_enterkey()" placeholder="검색어를 입력하세요">
               <span class="input-group-append">
-                <button class="btn btn-secondary" type="button">Go!</button>
+                <button class="btn btn-secondary" type="button" onclick="search_post()">검색</button>
               </span>
             </div>
           </div>
@@ -194,3 +194,16 @@
     <script src="{% static 'blog/assets/js/custom.js' %}"></script>
 </body>
 </html>
+
+<script>
+  function search_post() {
+    var search_value = document.getElementById('search-input').value;
+    location.href = "/blog/search/" + search_value + "/";
+  }
+
+  function wait_for_enterkey() {
+    if (window.event.keyCode == 13) {
+      search_post();
+    }
+  }
+</script>
