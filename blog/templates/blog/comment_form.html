@@ -1,0 +1,14 @@
+{% extends 'blog/base.html' %}
+
+<title>{% block title %}{{object.pk}} - BLOG{% endblock %}</title>
+
+{% block content %}
+    <h3>댓글 수정</h3>
+    <form method="post">{% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <button type="submit" class="btn btn-primary float-right">submit</button>
+    </form>
+    {{ form.media }}
+{% endblock %}
