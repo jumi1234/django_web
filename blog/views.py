@@ -2,7 +2,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
 from .models import Post, Category, Tag, Comment
 from .forms import CommentForm
-from django.views.generic import ListView, DetailView, UpdateView, CreateView
+from django.views.generic import ListView, DetailView, UpdateView, CreateView, DeleteView
+
 
 # Create your views here.
 
@@ -102,7 +103,7 @@ def new_comment(request, pk):
     else:
         return redirect('/blog/')
 
-def delete_comment(request, pk):
+def delete_comment(request, pk):  # Function
     comment = Comment.objects.get(pk=pk)
 
     if request.user == comment.author:
@@ -111,6 +112,19 @@ def delete_comment(request, pk):
         return redirect(post.get_absolute_url(), '#comment-list')
     else:
         return redirect('/blog/')
+
+# class CommentDelete(DeleteView):    # Class
+#     model = Comment
+#
+#     def get_object(self, queryset=None):
+#         comment = super(CommentDelete, self).get_object()
+#         if comment.author != self.request.user:
+#             raise PermissionError('삭제권한이 없습니다')
+#         return comment
+#
+#     def get_success_url(self):
+#         post = self.get_object().post
+#         return post.get_absolute_url() + '#comment-list'
 
 # def post_detail(request, pk):
 #     blog_post = Post.objects.get(pk=pk)
