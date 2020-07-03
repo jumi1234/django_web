@@ -1,7 +1,25 @@
 {% extends 'basecamp/base_full.html' %}
+{% load static %}
 
 {% block content %}
     <div class="container">
-       <h1>어바웃미</h1>
+        <div class="row">
+            <div class="col-md-9">
+                <h1 class="my-3">ABOUT ME</h1>
+                <h3 class="my-3">dvjm입니다</h3>
+            </div>
+            <div class="col-md">
+                <img class="img-fluid" src="{% static 'basecamp/images/cheese.jpg' %}"/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <img class="img-fluid" src="{% static 'basecamp/images/cheese.jpg' %}"/>
+            </div>
+            <div class="col-md">
+                <h1>Contact me</h1>
+                <h5 class="my-2">email: kimjumi8998@gmail.com</h5>
+            </div>
+        </div>
     </div>
 {% endblock %}
