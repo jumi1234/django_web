@@ -62,7 +62,7 @@
         <div class="media-body">
             {% if comment.author == request.user %}
             <button class="btn btn-sm btn-info float-right">EDIT</button>
-            <button class="btn btn-sm btn-warning float-right">DELETE</button>
+            <button type="button" class="btn btn-sm btn-warning float-right" data-toggle="modal" data-target="#deleteCommentModal-{{ comment.pk }}">DELETE</button>
             {% endif %}
             <h5 class="mt-0">{{ comment.author }} <small class="text-muted">{{ comment.created_at }}</small></h5>
             {{ comment.get_markdown_content | safe}}
@@ -70,5 +70,30 @@
     </div>
     {% endfor %}
 </div>
+
+{% for comment in object.comment_set.all %}
+    {% if user == comment.author %}
+        <!-- Modal -->
+        <div class="modal fade" id="deleteCommentModal-{{ comment.pk }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">정말로 삭제하시겠습니까?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                 <p>{{ comment.get_markdown_content | safe}}</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="location.href='/blog/delete_comment/{{ comment.pk }}/'">DELETE</button>
+              </div>
+            </div>
+          </div>
+        </div>
+    {% endif%}
+{% endfor %}
 
 {% endblock %}
