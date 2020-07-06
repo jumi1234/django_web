@@ -147,6 +147,6 @@ MARKDOWNX_MEDIA_PATH = datetime.now().strftime('markdownx/%Y/%m/%d')
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
-SITE_ID=1
-
 LOGIN_REDIRECT_URL = '/blog/'
+
+SITE_ID=3
