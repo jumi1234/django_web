@@ -15,6 +15,10 @@ Including another URLconf
 """
 from django.urls import path, include
 from . import views
+from django.conf.urls import handler404, handler500
+
+handler404 = "blog.views.error404"
+handler500 = "blog.views.error500"
 
 urlpatterns = [
     # path('<int:pk>', views.post_detail),

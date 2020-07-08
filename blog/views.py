@@ -135,6 +135,13 @@ def delete_comment(request, pk):  # Function
     else:
         return redirect('/blog/')
 
+def error404(request, *args):
+    return render(request, '404.html')
+
+def error500(request, *args):
+    return render(request, '500.html')
+
+
 # class CommentDelete(DeleteView):    # Class
 #     model = Comment
 #
@@ -156,5 +163,3 @@ def delete_comment(request, pk):  # Function
 # def index(request):
 #     posts = Post.objects.all()
 #     return render(request, 'blog/post_list.html', {'posts': posts})
-
-
